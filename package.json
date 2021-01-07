@@ -14,5 +14,9 @@
   "license": "MIT",
   "engines": {
     "node": ">=6.0.0"
+  },
+  "dependencies": {
+    "@types/d3": "^6.2.0",
+    "d3": "^6.3.1"
   }
 }
