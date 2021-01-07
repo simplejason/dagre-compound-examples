@@ -18,5 +18,8 @@
   "devDependencies": {
     "lint-staged": "^10.5.3",
     "prettier": "2.2.1"
+  },
+  "dependencies": {
+    "dagre-compound": "0.0.4"
   }
 }
