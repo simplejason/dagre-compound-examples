@@ -41,7 +41,7 @@ export class SvgContainer extends React.Component<SvgContainerProps, SvgContaine
     super(props);
     const { source } = this.props;
     this.state = {
-      renderInfo: buildGraph(source)
+      renderInfo: buildGraph(source, {expanded: ['GROUP0', 'GROUP1']})
     };
   }
 
@@ -49,7 +49,7 @@ export class SvgContainer extends React.Component<SvgContainerProps, SvgContaine
     const { source } = this.props;
     this.setState({
       renderInfo: buildGraph(source, {
-        expanded: ['GROUP0']
+        expanded: ['GROUP0', 'GROUP1']
       })
     })
   }
@@ -64,16 +64,29 @@ export class SvgContainer extends React.Component<SvgContainerProps, SvgContaine
   }
 
   render() {
-    console.log(this.state.renderInfo)
     return (
         <div className="graph-container">
           <div className="buttons">
-            <button onClick={this.expand}>Expand</button>
-            <button onClick={this.collapse}>Collapse</button>
+            <button onClick={this.expand} className="button-secondary">Expand</button>
+            <button onClick={this.collapse} className="button-warning">Collapse</button>
           </div>
 
           <svg className="graph">
             <g className="zoom">
+              <defs>
+                <marker
+                    id="arrow"
+                    viewBox="1 0 20 20"
+                    refX="8"
+                    refY="3.5"
+                    markerWidth="10"
+                    markerHeight="10"
+                    orient="auto"
+                >
+                  <polygon points="0 0, 10 3.5, 0 7" />
+                </marker>
+              </defs>
+
               <GroupNode renderInfo={this.state.renderInfo} type={'root'} />
             </g>
           </svg>
@@ -124,7 +137,7 @@ export class GraphEdge extends React.Component<GraphEdgeProps> {
     const points = line(edge.points)!;
     return (
       <g className="edge" key={edge.v + '--' + edge.w}>
-        <path className="edge-line" data-edge={edge.v + '--' + edge.w} d={points} />
+        <path className="edge-line" data-edge={edge.v + '--' + edge.w} d={points} marker-end="url(#arrow)" />
       </g>
     );
   }
@@ -170,14 +183,24 @@ export class GraphNode extends React.Component<GraphNodeProps> {
 
 function App() {
   const data = {
-    nodes: [{ id: '0-1' }, { id: '0-2' }, { id: '1-1' }, { id: '1-2' }],
+    nodes: [
+      { id: "0-1" },
+      { id: "0-2" },
+      { id: "0-3" },
+      { id: "0-4" },
+      { id: "1-1" },
+      { id: "1-2" }
+    ],
     edges: [
-      { v: '0-1', w: '0-2' },
-      { v: '0-2', w: '1-1' },
-      { v: '1-1', w: '1-2' }
+      { v: "0-1", w: "0-2" },
+      { v: "0-2", w: "0-3" },
+      { v: "0-2", w: "0-4" },
+      { v: "0-4", w: "1-1" },
+      { v: "1-1", w: "1-2" }
     ],
     compound: {
-      GROUP0: ['0-1', '0-2']
+      GROUP0: ["0-1", "0-2", "GROUP1"],
+      GROUP1: ["0-3", "0-4"]
     }
   };
   return <SvgContainer source={data} />;
