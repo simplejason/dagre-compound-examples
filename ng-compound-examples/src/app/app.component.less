@@ -1,0 +1,73 @@
+:host {
+  ::ng-deep {
+    .graph-container {
+      padding: 24px 24px;
+    }
+
+    .graph {
+      display: block;
+      overflow: hidden;
+      height: 400px;
+      width: 100%;
+    }
+
+    .node-rect {
+      stroke: #1a90ff;
+      fill: #fff;
+      stroke-width: 1.5px;
+    }
+
+    .edge-line {
+      fill: none;
+      stroke: #91d5ff;
+      stroke-linecap: round;
+      stroke-width: 2.5px;
+      stroke-dashoffset: 0;
+      stroke-dasharray: 10;
+      stroke-opacity: 1;
+      animation: circle-draw 0.3s linear infinite;
+    }
+
+    #arrow {
+      fill: #91d5ff;
+    }
+
+    .bridge {
+      display: none;
+    }
+  }
+}
+
+/* 自定义样式 */
+.buttons button {
+  color: white;
+  border-width: 0;
+  border-radius: 4px;
+  padding: 4px 8px;
+  cursor: pointer;
+}
+
+.buttons button:focus {
+  outline: none;
+}
+
+.button-warning {
+  background: rgb(202, 60, 60);
+}
+
+.button-secondary {
+  background: rgb(66, 184, 221);
+}
+
+.buttons button:last-child {
+  margin-left: 24px;
+}
+
+@keyframes circle-draw {
+  0% {
+    stroke-dashoffset: 20;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
