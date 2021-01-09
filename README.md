@@ -28,3 +28,5 @@ $ cd ng-compound-examples/
 $ npm install
 $ npm run start
 ```
+## Snapshot
+![image](https://img.alicdn.com/imgextra/i2/O1CN015xg3bK23trTeAr9nF_!!6000000007314-1-tps-480-162.gif)
