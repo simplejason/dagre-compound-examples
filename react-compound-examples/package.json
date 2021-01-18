@@ -11,7 +11,7 @@
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
     "dagre": "^0.8.5",
-    "dagre-compound": "~0.0.4",
+    "dagre-compound": "~0.0.5",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-scripts": "4.0.1",
